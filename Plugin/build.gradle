@@ -1,0 +1,35 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+group 'net.craftycaverns'
+version '5.0-SNAPSHOT-9'
+
+repositories {
+    mavenCentral()
+
+    maven { url 'https://repo.codemc.io/repository/maven-public/' }
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT'
+
+    compileOnly 'me.filoghost.holographicdisplays:holographicdisplays-api:3.0.0'
+    compileOnly 'com.github.decentsoftware-eu:decentholograms:2.8.1'
+
+    implementation project(':Common')
+    implementation project(':v1_19_R3')
+}
+
+shadowJar {
+    archiveFileName = "${rootProject.name}-${project.version}.jar"
+}
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    from(sourceSets.main.resources.srcDirs) {
+        expand 'version': project.version
+        include 'plugin.yml'
+    }
+}
