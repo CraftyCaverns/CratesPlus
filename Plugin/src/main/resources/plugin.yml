@@ -1,0 +1,16 @@
+name: CratesPlus
+description: 'Free crates plugin built for Bukkit/Spigot.'
+main: plus.crates.CratesPlus
+version: ${version}
+authors: [ Connor Linfoot, SavageAvocado ]
+softdepend: [ HolographicDisplays,DecentHolograms ]
+api-version: 1.13
+commands:
+  crate:
+    description: Main CratesPlus command
+    aliases: [ cratesplus,crates ]
+permissions:
+  cratesplus.admin:
+    default: op
+  cratesplus.updates:
+    default: op
